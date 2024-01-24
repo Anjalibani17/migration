@@ -27,8 +27,16 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    await queryInterface.changeColumn('Students', 'email', {
+      type: Sequelize.INTEGER,
+    });
   },
   async down(queryInterface, Sequelize) {
+    await queryInterface.changeColumn('Students', 'email', {
+      type: Sequelize.STRING,
+    });
+
     await queryInterface.dropTable('Students');
   }
 };
